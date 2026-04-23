@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Your Work Buddies app",
-  description: "Built with the Work Buddies team.",
+  title: "Time Guesser",
+  description: "A fun time-guessing game for kids.",
 };
 
 export default function RootLayout({

@@ -1,1 +1,50 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap");
+
+@theme {
+  --font-nunito: "Nunito", sans-serif;
+
+  /* Brand palette */
+  --color-sky-soft: #bae6fd;       /* sky-200 ish – background */
+  --color-sky-deep: #0ea5e9;       /* sky-500 – accents */
+  --color-coral: #fb923c;          /* orange-400 – STOP button */
+  --color-coral-hover: #f97316;    /* orange-500 */
+  --color-gold: #fbbf24;           /* amber-400 – <5 s result */
+  --color-green-soft: #4ade80;     /* green-400 – <15 s result */
+  --color-purple-soft: #a78bfa;    /* violet-400 – otherwise */
+
+  /* Animation durations (all ≤ 1.5 s) */
+  --duration-pulse-slow: 1.4s;
+  --duration-pop: 0.45s;
+  --duration-fade: 0.5s;
+}
+
+/* ── Hourglass pulse ─────────────────────────────────────────── */
+@keyframes hg-pulse {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.18); opacity: 0.75; }
+}
+
+/* ── Result pop-in ───────────────────────────────────────────── */
+@keyframes pop-in {
+  0%   { transform: scale(0.6); opacity: 0; }
+  70%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* ── Confetti drift (reusable on individual spans) ───────────── */
+@keyframes confetti-fall {
+  0%   { transform: translateY(-20px) rotate(0deg);   opacity: 1; }
+  100% { transform: translateY(90px)  rotate(360deg); opacity: 0; }
+}
+
+/* ── Screen fade-in ──────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-hg-pulse   { animation: hg-pulse    var(--duration-pulse-slow) ease-in-out infinite; }
+.animate-pop-in     { animation: pop-in      var(--duration-pop) cubic-bezier(.34,1.56,.64,1) both; }
+.animate-fade-up    { animation: fade-up     var(--duration-fade) ease-out both; }
+.animate-confetti   { animation: confetti-fall 1.2s ease-in forwards; }
